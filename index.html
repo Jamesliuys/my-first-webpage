@@ -9,16 +9,44 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <img src="daredevil.jpeg" alt="daredevil is awesome">
-    <img src="deadpool.jpeg" alt="deadpool is a great superhero">
-    <img src="avengers assemble.jpeg" alt="they are all so good">
+    <img id="myimg" src="avengers assemble.jpeg" alt="avengers are awesome">
     <a href="https://www.marvel.com">visit marvel.com</a>
+    <a href="https://www.marvelcomics.com">visit marvel comics.com</a>
     </ol>
-    <li>green lantern</li>
-    <li>spiderman</li>
-    <li>deadpool</li>
-    <li>daredevil</li>
-    <li>Thor</li>
-    <li>Thanos</li>
+    <li>
+      <a href="#" onclick="setimg('greenlantern.jpeg')">green lantern</a>
+    </li>
+    <li>
+      <a href="#" onclick="setimg('spiderman.jpeg')">spiderman</a>
+    </li>
+    <li>
+      <a href="#" onclick="setimg('deadpool.png')">deadpool</a>
+    </li>
+    <li><a href="#"onclick="setimg('daredevil.png')">daredevil</a></li>
+    <li>
+      <a href="#" onclick="setimg('thor.jpeg')">Thor</a>
+    </li>
+    <li>
+      <a href="#" onclick="setimg('thanos.jpeg')">Thanos</a>
+    </li>
   </body>
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    function setimg(imgname){
+      document.getElementById('myimg').src = imgname;
+    }
+  </script>
+
+
+
+
 </html>
