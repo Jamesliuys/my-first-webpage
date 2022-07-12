@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles3.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="data.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
   </head>
   <body>
 
@@ -30,8 +35,7 @@
           <div class="card ">
             <div class="card-content">
               <span class="card-title">Map</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <div id="map"></div>
             </div>
           </div>
         </div>
@@ -54,19 +58,31 @@
               <p id="mydata"></p>
             </div>
           </div>
-        </div>
-      </div>
 
     </div>
 
   </body>
 
 
-  <script>
-    console.log(coviddata.data[0]);
-    var newhtml = "";
+  <script> type="text/JavaScript">
+  pushdata();
+  function pushdata() {
+    myhtml = " <ul class='collection'>" // buiding a string tp push to p tag
     for (i=0;i<5;i++) {
-      newhtml = newhtml + coviddata.data[i].location + " " + coviddata.data[i].dead + "<br>";
+      myhtml = myhtml + "<li class='collection-item'>" + coviddata.data[i].location + " - " + coviddata.data[i].dead + "</li>";
     }
-    document.getElementById("mydata").innerHTML = newhtml;
-  </script>
+    myhtml = myhtml + "</ul>"
+    document.getElementById('mydata').innerHTML = myhtml;
+  }
+
+  mapping();
+  function mapping() {
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'OpenStreetMap'
+    }).addTo(map);
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+  }
+</script>
+</html>
